@@ -1,0 +1,37 @@
+{% extends "index.html" %} {% block "content" %}
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">Confirmar Eliminación</div>
+    <div class="card-body">
+      <p>
+        ¿Estás seguro de que deseas eliminar esta publicación?
+        <div>
+            <h2><strong>{{ post.titulo }}</strong>
+            </h2>
+            {% if post.imagen %}
+        <img
+          src="{{ post.imagen.url }}"
+          alt="Imagen actual"
+          style="max-width: 400px; max-height: 300px"
+        />
+        {% endif %}
+        <p>{{post.descripcion}}</p>
+        <em>{{post.created}}</em>
+        </div>
+        
+      </p>
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Agregar jQuery y Bootstrap JS para el modal -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock "content" %}

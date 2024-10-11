@@ -1,0 +1,50 @@
+{% extends "index.html" %} {% block "titulo" %}
+<title>Publicación</title>
+{% endblock "titulo" %} {% block "content" %}
+<div class="div-crearPubli">
+  {{error}}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form}}
+
+    <div id="imagePreview" class="mt-3">
+      <!-- Vista previa de la imagen se mostrará aquí -->
+    </div>
+    <div class="botonPubli">
+      <!-- Agrega este div -->
+      <button>Publicar</button>
+    </div>
+  </form>
+</div>
+<!-- ESTE SCRIPT VISUALIZARÁ LA IMAGEN CARGADA ANTES DE PUBLICARSE -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.getElementById("id_imagen");
+    const imagePreview = document.getElementById("imagePreview");
+
+    fileInput.addEventListener("change", function () {
+      // Limpiar vista previa anterior
+      imagePreview.innerHTML = "";
+
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          // Crear un elemento de imagen y establecer su src al contenido del archivo
+          const img = document.createElement("img");
+          img.src = e.target.result;
+          img.style.maxWidth = "100%";
+          img.style.height = "auto";
+          img.alt = "Vista previa de la imagen";
+
+          // Agregar la imagen al contenedor de vista previa
+          imagePreview.appendChild(img);
+        };
+
+        // Leer el archivo como Data URL
+        reader.readAsDataURL(file);
+      }
+    });
+  });
+</script>
+{% endblock "content" %}

@@ -1,0 +1,163 @@
+/* Contenedor principal para las publicaciones */
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;  /* Una columna para centrar las publicaciones */
+    justify-items: center;       /* Centrar las publicaciones */
+    padding: 20px;
+}
+
+/* Tarjeta individual de publicación */
+.post-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    
+    
+    max-width: 700px;               /* Ancho máximo de la tarjeta, similar al estilo de Instagram */
+    /* width: 700px; */
+    margin: 10px auto;           /* Márgenes automáticos para centrar la tarjeta */
+    transition: transform 0.2s;
+}
+
+.post-card:hover {
+    transform: scale(1.02);      /* Efecto hover */
+}
+.post-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+}
+.post-header p{
+ padding-top: 10px;
+ padding-left: 10px;
+}
+/* Imagen dentro de la tarjeta */
+.post-image {
+    width: 100%;                 /* Imagen ocupa todo el ancho de la tarjeta */
+    max-height: 800px;               /* Limitar la altura máxima de la imagen */
+    object-fit: cover;           /* Ajuste de la imagen sin perder la proporción */
+}
+
+/* Contenido del post */
+.post-content {
+    padding: 10px;
+}
+
+.post-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.post-content p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.post-content em {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.card-publi {
+    color: #777;
+}
+.text-end {
+    text-align: right; /* Alinea el texto a la derecha */
+    padding-right: 8px;
+  }
+/* Estilo para los iconos del post */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    font-size: 1.5em;
+}
+
+.post-actions i {
+    cursor: pointer;  /* Hacer que el cursor cambie a mano cuando se pasa sobre los iconos */
+    padding-right: 10px;  /* Espacio entre los iconos */
+    transition: color 0.3s ease;
+}
+
+.post-actions i:hover {
+    color: #00A6ED;  /* Cambiar de color al pasar el ratón */
+}
+
+/* Contenedor para los botones de editar y eliminar */
+.post-actions-buttons {
+    display: flex;
+    justify-content: right; /* Colocar los botones en extremos opuestos */
+    gap: 5px; /* Espacio entre los botones */
+    padding: 10px 10px;
+    font-size: 13px;
+}
+
+.post-actions-buttons .btn {
+    padding: 5px 5px; /* Tamaño de los botones */
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Un tamaño de texto ligeramente más pequeño */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave para el color */
+}
+
+/* Estilo para el botón de editar */
+.post-actions-buttons .btn-warning {
+    background-color: #67b8f1;
+    border: none;
+    color: white;
+}
+
+.post-actions-buttons .btn-warning:hover {
+    background-color: #FE979C; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para el botón de eliminar */
+.post-actions-buttons .btn-danger {
+    background-color: #f76473;
+    border: none;
+    color: white;
+}
+
+.post-actions-buttons .btn-danger:hover {
+    background-color: #FE979C; /* Color más oscuro al pasar el ratón */
+}
+
+.div-crearPubli{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0,5, 0.5);
+}
+
+#imagePreview{
+    max-width: 600px;
+}
+
+.botonPubli{
+    text-align: center;
+    padding: 10px;
+    margin: 0px;
+}
+
+.div-editarPubli{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0,5, 0.5);
+}
+
+#imagenEdit {
+    max-width: 200px;
+}
+
+
+.btn-warning {
+    background-color: #67b8f1;
+    border: none;
+    color: white;
+}

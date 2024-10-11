@@ -1,0 +1,361 @@
+html,body{
+  background-color: #B084BA;
+  height: 100%;
+}
+.fondo2{
+  background-color: #B084BA;
+}
+
+.colorBoton{
+background-color: #AAB6DE;
+}
+
+.BotonCrearCuenta{
+  background-color: #52a1da;
+}
+
+.imgInicio{
+  background-color: transparent !important;/* Fondo de la imagen transparente */
+  border: none; /* sin bordes */
+}
+
+.ColorEncabezado{
+  background-color: #8364A0;
+}
+
+.ColorFooter{
+
+  background-color: #8364A0;
+  height: 105px;
+}
+
+
+
+/* ------------vistas del navegador cuando ya inicias sesion --------*/
+
+nav .estiloIcon {
+  font-size: 14px; /* Tamaño del texto */
+  color: white; /* Color del texto */
+ 
+}
+
+nav .estiloIcon i {
+  font-size: 24px; /* Tamaño de los íconos */
+}
+
+/* Efecto hover */
+nav .estiloIcon hover {
+  color: #00A6ED; /* Cambia el color cuando se pasa el mouse */
+  
+}
+
+
+
+/*----------------para el perfil--------------------*/
+/* Contenedor principal del perfil */
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #000;
+  color: white;
+}
+
+/* Sección superior del perfil */
+.profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+/* Botón de editar perfil */
+.editar-perfil-btn {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.editar-perfil-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Descripción o biografía */
+.profile-description p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #ccc;
+}
+
+/* Imagen de perfil */
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Imagen redonda */
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* Información del perfil */
+.profile-info {
+  flex: 1;
+  margin-left: 30px;
+}
+
+.profile-info h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-stats span {
+  font-size: 1.2em;
+}
+
+.profile-actions {
+  margin-top: 10px;
+}
+
+.profile-actions button {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.profile-actions i {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.profile-description p {
+  margin-top: 10px;
+}
+
+/* Barra de navegación */
+.profile-nav {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}
+
+.profile-nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.profile-nav button.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+/* Cuadrícula de publicaciones */
+.profile-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding:10px;
+  
+}
+.post-item{
+  padding-bottom: 20px;
+  background-color: #c9aae6;
+}
+
+.post-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.post-item img:hover {
+  transform: scale(1.01);
+}
+
+
+/*------diseño editar perfil------*/
+/* Diseño del contenedor para el formulario de editar perfil */
+.editar-perfil-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #b7a1cc; 
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabecera del formulario */
+.editar-perfil-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo de la foto de perfil */
+.editar-foto img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  margin-right: 20px;
+}
+
+/* Estilo del texto de usuario */
+.editar-usuario h3 {
+  font-size: 1.5em;
+  color: white;
+}
+
+/* Estilo de los campos del formulario */
+form .form-group {
+  margin-bottom: 15px;
+}
+
+form .form-group label {
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+/* Estilo del input y textarea */
+form .form-group input, 
+form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  background-color: #7ab6e0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+form .form-group textarea {
+  height: 60px;  /* Ajustar la altura del área de biografía */
+}
+
+form .form-group input::placeholder, 
+form .form-group textarea::placeholder {
+  color: #ccc;
+}
+
+/* Botones de acción */
+form button[type="submit"],
+form a.btn-secondary {
+  display: inline-block;
+  width: 30%;  /* Ambos botones ocupan el mismo ancho */
+  text-align: center;
+  background-color: #52a1da;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 15px; /* Tamaño de los botones */
+    font-size: 0.9em; /* Un tamaño de texto ligeramente más pequeño */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave para el color */
+}
+
+
+form button[type="submit"]:hover,
+form a.btn-secondary:hover {
+  background-color: #FE979C;  /* Color al pasar el ratón */
+}
+
+/* Estilo especial para el botón Cancelar */
+form a.btn-secondary {
+  background-color: #52a1da;
+}
+
+form a.btn-secondary:hover {
+  background-color: #FE979C;
+}
+
+/* Contenedor de los botones */
+.botones-accion {
+  display: flex;
+  justify-content: space-between;  /* Colocar los botones en extremos opuestos */
+  align-items: center;  /* Asegura que estén alineados al mismo nivel */
+  margin-top: 15px;
+}
+
+/* Estilo adicional para la imagen */
+.img-thumbnail {
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.form-control-file {
+  margin-top: 10px;
+  color: white;
+  background-color: #52a1da;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.HomeTitulo{
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+
+.comentario{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.comentario p{
+  margin: 5px;
+}
+.comentario em{
+  font-size: 10px;
+  display: flex;
+    justify-content: right; /* Colocar los botones en extremos opuestos */
+    gap: 10px;
+}
+
+
+.formComentario {
+  align-items: center;
+}
+
+
+.formComentario div {
+  flex-grow: 1;
+  margin-right: 10px; /* Espacio entre textarea y botón */
+}
+/* .formComentario{
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+/* .btnComent{
+  background-color: #8364A0;
+} */

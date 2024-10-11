@@ -1,0 +1,14 @@
+{% extends "index.html" %} 
+
+{% block "titulo" %}
+<title>buscar</title>
+{% endblock "titulo" %} 
+
+{% block "content" %}
+<p>Esta es la vista para buscar a otros usuarios</p>
+<form method="GET" action="{% url 'buscar' %}">
+    <input type="text" name="q" placeholder="Buscar usuario...">
+    <button type="submit">Buscar</button>
+</form>
+
+{% endblock "content" %}

@@ -1,0 +1,60 @@
+
+/* Centrar el formulario */
+.form-container {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    min-height: 95vh;        /* Altura mínima de la ventana */
+    border-radius: 10px;
+    
+    
+}
+
+
+/* Estilo del formulario */
+.form-content {
+    background-color: #AAB6DE;
+    padding: 20px;             /* Espaciado interno */
+    border-radius: 8px;        /* Bordes redondeados */
+    width: 300px;   
+    
+}
+
+/* Estilo de los grupos de formulario */
+.form-group {
+    margin-bottom: 15px;       /* Espacio entre los campos */
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+.form-group input{
+    background-color:#b3d4eb;
+    border-style: none;
+}
+
+/* Estilo del botón */
+.form-button  {
+    width: 100%;               /* Botón ocupa todo el ancho */
+    padding: 10px;             /* Espaciado interno del botón */
+    background-color: #8ABCDF; /* Color del botón */
+    color: white;              /* Color del texto del botón */
+    border: none;              /* Sin borde */
+    border-radius: 4px;        /* Bordes redondeados del botón */
+    cursor: pointer;           /* Cambia el cursor al pasar sobre el botón */
+}
+
+.form-button2{
+    background-color: #8ABCDF;
+    
+}
+.form-button:hover {
+    background-color: #FE979C; /* Cambia color al pasar el mouse */
+}
+
+/* Estilo de la imagen de crear cuenta*/
+.form-image {
+    max-width: 300px;         /* Ancho máximo de la imagen */
+    margin-bottom: 20px;      /* Espacio debajo de la imagen */
+}

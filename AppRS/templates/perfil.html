@@ -1,0 +1,111 @@
+{% extends "index.html" %} {% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  <!-- Diseño para Inicio de Sesion-->
+  {% block "titulo" %}
+  <title>{{ user.username }}'s Perfil</title>
+  {% endblock "titulo" %}
+</head>
+
+{% block "content" %} {{error}}
+
+<body>
+  <!-- Sección superior del perfil -->
+  <div class="profile-header">
+    <!-- Imagen de perfil -->
+    <div class="profile-image">
+      {% if perfil.foto_perfil %}
+      <img src="{{ perfil.foto_perfil.url }}" alt="Imagen de perfil" />
+      {% else %}
+      <img
+        src="https://i.pinimg.com/564x/de/ec/53/deec53e7c3d6cbb8bcaa38d208cfcc46.jpg"
+        alt="Imagen de perfil predeterminada"
+      />
+      {% endif %}
+    </div>
+
+    <!-- Información del usuario -->
+    <div class="profile-info">
+      <h2>{{ user.username }}</h2>
+      <!-- Botón de editar perfil (Solo se muestra si es el perfil del usuario autenticado) -->
+      {% if user == perfil.nombre %}
+      <a
+        href="{% url 'editar_perfil' %}"
+        class="btn btn-outline-light editar-perfil-btn"
+        >Editar perfil</a
+      >
+      {% endif %}
+
+      <div class="profile-stats">
+        <span><strong>{{ num_publicaciones }}</strong> Publicaciones</span>
+        <span><strong>{{ num_seguidores }}</strong> seguidores</span>
+        <span><strong>{{ num_seguidos }}</strong> Seguidos</span>
+      </div>
+
+      <!-- Descripción o biografía -->
+      <div class="profile-description">
+        <p>{{ perfil.biografia }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de navegación (Publicaciones, Guardado, Etiquetas) -->
+  <div class="profile-nav">
+    <button id="btn-publicaciones" class="active">Publicaciones</button>
+    <button id="btn-guardados">Guardados</button>
+  </div>
+
+  <!-- Sección de publicaciones en cuadrícula -->
+  <div class="profile-posts-grid" id="publicaciones">
+    {% if posts %} {% for post in posts %}
+    <div class="post-item">
+      <h5>{{post.titulo}}</h5>
+      <p>{{post.descripcion}}</p>
+      {% if post.imagen %}
+      <img src="{{ post.imagen.url }}" alt="Publicación" />
+      {% endif %}
+      <em>{{post.created|date:"d M Y H:i"}}</em>
+    </div>
+    {% endfor %} {% else %}
+    <p>No tienes publicaciones.</p>
+    {% endif %}
+  </div>
+
+  <!-- Sección de publicaciones guardadas en cuadrícula (Oculta inicialmente) -->
+  <div class="profile-posts-grid" id="guardados" style="display: none">
+    {% if guardados %} {% for post in guardados %}
+    <div class="post-item">
+      <h5>{{post.titulo}}</h5>
+      <p>{{post.descripcion}}</p>
+      {% if post.imagen %}
+      <img src="{{ post.imagen.url }}" alt="Publicación Guardada" />
+      {% endif %}
+      <em>{{post.created|date:"d M Y H:i"}}</em>
+    </div>
+    {% endfor %} {% else %}
+    <p>No tienes publicaciones guardadas.</p>
+    {% endif %}
+  </div>
+
+  <!-- Script para alternar entre publicaciones y guardados -->
+  <script>
+    document
+      .getElementById("btn-publicaciones")
+      .addEventListener("click", function () {
+        document.getElementById("publicaciones").style.display = "grid";
+        document.getElementById("guardados").style.display = "none";
+        this.classList.add("active");
+        document.getElementById("btn-guardados").classList.remove("active");
+      });
+
+    document
+      .getElementById("btn-guardados")
+      .addEventListener("click", function () {
+        document.getElementById("guardados").style.display = "grid";
+        document.getElementById("publicaciones").style.display = "none";
+        this.classList.add("active");
+        document.getElementById("btn-publicaciones").classList.remove("active");
+      });
+  </script>
+</body>
+{% endblock "content" %}

@@ -1,0 +1,38 @@
+
+{% load static %}
+
+{% block "titulo" %}
+<title>Inicio de Sesión</title>
+{% endblock "titulo" %}  
+
+<head>
+<link rel="stylesheet" href="{% static 'from2InicioSesion.css' %}"><!-- Diseño para Inicio de Sesion-->
+
+</head>
+
+<body>
+{% block "content" %}
+{{error}}
+
+<div class="form-containerIni">
+    
+    <h2 class="mb-4">BIENVENIDO DE NUEVO</h2>
+    <img src="https://firebasestorage.googleapis.com/v0/b/pruebag-d346f.appspot.com/o/welcome%20(2).png?alt=media&token=520adcc7-7319-46a9-9e7e-e8cf896f7000" alt="Logo" class="ImgIni">
+
+    <form action={% url "iniciosesion" %} method="POST" class="form-contenIni">
+        {% csrf_token %}
+        {{ form }} 
+  
+        <div class="form-groupIni">
+            <button class="btn form-button2">Iniciar sesión</button>
+            
+    <a href="{% url 'index' %}" class="btn form-button2" style="text-decoration: none;">Cancelar</a>
+        </div>
+        
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock "content" %}

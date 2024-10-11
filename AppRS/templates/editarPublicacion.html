@@ -1,0 +1,73 @@
+{% extends "index.html" %} {% block "titulo" %}
+<title>Editar Publicación</title>
+{% endblock "titulo" %} {% block "content" %}
+
+<div class="div-editarPubli">
+  <h3>Editar Publicación</h3>
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form}}
+    {% if post.imagen %}
+    <div id="imagenEdit">
+      <h4>Foto Actual:</h4>
+      <img
+        src="{{ post.imagen.url }}"
+        alt="Imagen actual"
+        style="max-width: 400px; max-height: 300px"
+      />
+    </div>
+    
+    {% endif %}
+    <!-- Aquí se Mostrará la imagen actual si existe -->
+    
+    <div style="max-width: 400px; max-height: 300px">
+      <h4>Cambiar por:</h4>
+      <!-- si no hay imagen, esperará a cargar una nueva imagen y la mostrará dentro del div -->
+      <div id="imagePreview" class="mt-3"></div>
+      <!-- Vista previa de la imagen se mostrará aquí-->
+      </div>
+    </div>
+    
+    <div class="botonPubli">
+      <!-- Agrega este div -->
+      <button class="btn btn-warning">Guardar</button>
+      <a href="{% url 'home' %}" class="btn btn-warning">Cancelar</a>
+    </div>
+  </form>
+  
+</div>
+
+<!-- ESTE SCRIPT VISUALIZARÁ LA IMAGEN CARGADA ANTES DE PUBLICARSE -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fileInput = document.getElementById("id_imagen");
+      const imagePreview = document.getElementById("imagePreview");
+  
+      fileInput.addEventListener("change", function () {
+        // Limpiar vista previa anterior
+        imagePreview.innerHTML = "";
+  
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+  
+          reader.onload = function (e) {
+            // Crear un elemento de imagen y establecer su src al contenido del archivo
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.style.maxWidth = "50%";
+            img.style.height = "auto";
+            img.alt = "Vista previa de la imagen";
+  
+            // Agregar la imagen al contenedor de vista previa
+            imagePreview.appendChild(img);
+          };
+  
+          // Leer el archivo como Data URL
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+
+{% endblock "content" %}

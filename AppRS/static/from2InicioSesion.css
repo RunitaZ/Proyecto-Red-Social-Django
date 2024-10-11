@@ -1,0 +1,75 @@
+/* Asegúrate de que el contenedor cubra toda la altura de la pantalla */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B084BA; /* Fondo suave y agradable */
+}
+
+/* Estilo para el contenedor del formulario */
+.form-containerIni {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0,5, 0.5);
+    width: 350px; /* Ancho fijo para el formulario */
+    background-image: url("https://i.pinimg.com/564x/cf/d7/a3/cfd7a3695ce8b9b57c7a2375d3c87c5c.jpg");
+   
+}
+
+/* Estilo para el formulario */
+.form-contenIni {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%; /*lado derecho*/
+   
+}
+
+/* Espaciado entre los elementos del formulario */
+.form-contenIni input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 95%;       /*lado izq*/
+    box-sizing:border-box;
+    background-color: #dcb7e4;
+}
+
+/* Botón */
+.form-button2 {
+    background-color: #6C9BCF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+.form-button2:hover {
+    background-color: #FE979C;
+}
+
+/* Texto */
+h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color:  #1d2327;
+}
+.ImgIni{
+    max-width: 200px;         /* Ancho máximo de la imagen */
+    margin-bottom: 15px; 
+}
+.form-groupIni {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el botón */
+}

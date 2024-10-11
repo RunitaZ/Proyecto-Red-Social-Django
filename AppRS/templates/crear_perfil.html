@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <title>Crear Perfil</title>
+</head>
+
+{% block content %}
+    <h1>Crear Perfil</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar Perfil</button>
+    </form>
+{% endblock %}

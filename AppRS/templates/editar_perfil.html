@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block "content" %}
+<div class="editar-perfil-container">
+    <h3>Editar perfil</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="editar-perfil-header">
+            <!-- Imagen de perfil -->
+            <div class="editar-foto">
+                {% if perfil_form.instance.foto_perfil %}
+                    <img src="{{ perfil_form.instance.foto_perfil.url }}" alt="Imagen de perfil" class="img-thumbnail" />
+                {% else %}
+                    <img src="https://i.pinimg.com/1200x/43/4d/a1/434da1a654cf30717dd2cb9464e547bf.jpg" alt="Imagen predeterminada" class="img-thumbnail" />
+                {% endif %}
+            </div>
+    
+            <div class="editar-usuario">
+                <h3>{{ user_form.instance.username }}</h3>
+                <!-- Campo para subir una nueva foto de perfil sin "Currently" y "Clear" -->
+                <div class="form-group">
+                    <label for="id_foto_perfil" style="color: #ccc;">Cambiar foto de perfil</label>
+                    <input type="file" name="foto_perfil" class="form-control-file" id="id_foto_perfil">
+                </div>
+            </div>
+        </div>
+    
+        <!-- Otros campos del perfil -->
+        <div class="form-group">
+            <label for="id_biografia">Biografía</label>
+            {{ perfil_form.biografia }}
+        </div>
+    
+        <div class="form-group">
+            <label for="id_username">Nombre de usuario</label>
+            {{ user_form.username }}
+        </div>
+    
+        <!-- Botones de acción -->
+        <div class="form-group botones-accion">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="{% url 'perfil' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}
+

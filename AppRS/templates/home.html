@@ -1,0 +1,133 @@
+{% extends "index.html" %}
+
+<head>
+  {% block "titulo" %}
+  <title>Inicio</title>
+  {% endblock "titulo" %}
+</head>
+
+{% block "content" %}
+<!-- <a href="/publicacion/crear/">Nueva Publicación</a> -->
+<div class="container"></div>
+  <!-- <h4 class="HomeTitulo">Publicaciones Recientes</h4> -->
+  <div class="d-flex flex-column align-items-center" style="max-width: 700px; margin: auto;">
+    {% for post in posts %}
+    <div class="post-card mb-3" style="width: 100%; max-width: 700px;"> <!-- Ancho máximo de la tarjeta -->
+      <!-- Botones de editar y eliminar (solo para el propietario de la publicación) -->
+    
+      <div class="post-header">
+        <p>Publicado por: {{ post.user.username }}</p>
+        {% if post.user == request.user %}
+    <div class="post-actions-buttons">
+      <a href="{% url 'editarPublicacion' post.id %}" class="btn btn-warning"
+        ><i class="bi bi-pencil"> Editar</i></a
+      >
+      <a href="{% url 'eliminarPublicacion' post.id %}" class="btn btn-danger"
+        ><i class="bi bi-trash"> Eliminar</i></a
+      >
+    </div>
+    {% endif %}
+      </div>
+      <div class="post-content">
+        <h2>{{ post.titulo }}</h2>
+        <p>{{ post.descripcion }}</p>
+      </div>
+      {% if post.imagen %}
+      <img src="{{ post.imagen.url }}" alt="Imagen de {{ post.titulo }}" class="post-image" />
+      {% endif %}
+      <div class="post-footer text-end">
+        <em class="card-publi">{{ post.created|date:"d M Y H:i" }}</em>
+      </div>
+      
+      <div class="post-actions">
+        <i id="like-icon-{{ post.id }}" class="bi bi-heart"></i>
+        <i class="bi bi-chat" onclick="toggleCommentForm('{{ post.id }}')"></i>
+        <i class="bi bi-send"></i>
+        {% if post in request.user.perfilusuario.posts_guardados.all %}
+        <i id="save-icon-{{ post.id }}" class="bi bi-bookmark-fill" style="color: #8364a0"></i>
+        {% else %}
+        <i id="save-icon-{{ post.id }}" class="bi bi-bookmark"></i>
+        {% endif %}
+      </div>
+      <!-- Comentarios y formularios aquí -->
+       <!-- COMENTARIOS -->
+    <div class="comentario">
+      <h4>Comentarios:</h4>
+      {% for comentario in post.comentarios.all %}
+      <p>
+        <strong>{{ comentario.usuario.username }}:</strong>
+        {{ comentario.contenido }}
+      </p>
+      <em>{{comentario.fecha_coment|date:"d M Y H:i"}}</em>
+      {% empty %}
+      <p>No hay comentarios aún.</p>
+      {% endfor %}
+
+      <form
+        class="formComentario"
+        id="comment-form-{{ post.id }}"
+        method="POST"
+        style="display: none; "
+      >
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{ post.id }}" />
+        {{ comentario_form.as_p }}
+        <button class="btnComent" type="submit">Comentar</button>
+      </form>
+    </div>
+
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+<!-- OCUTAR Y MOSTRAR FORMULARIO COMENTARIO -->
+<script>
+  function toggleCommentForm(postId) {
+    const formCom = document.getElementById(`comment-form-${postId}`);
+    if (formCom.style.display === "none" || formCom.style.display === "") {
+      formCom.style.display = "flex"; // Mostrar el formulario
+    } else {
+      formCom.style.display = "none"; // Ocultar el formulario
+    }
+  }
+</script>
+<!-- Script para manejar el guardado de publicaciones -->
+<script>
+  document.querySelectorAll("[id^=save-icon]").forEach((icon) => {
+    icon.addEventListener("click", () => {
+      let postId = icon.id.split("-")[2]; // Obtener el ID del post desde el ID del ícono
+      console.log(postId);
+      fetch("{% url 'toggle_guardar_publicacion' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ post_id: postId }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Alternar entre los estados del ícono según si la publicación fue guardada o no
+          icon.classList.toggle("bi-bookmark-fill"); // Cambiar a marcador lleno
+          icon.classList.toggle("bi-bookmark"); // Cambiar a marcador vacío
+          icon.style.color = data.saved ? "#8364A0" : "black"; // Cambiar el color según el estado guardado
+        })
+        .catch((error) => console.error("Error:", error));
+    });
+  });
+
+  //vista de likes por el momento es solo visual
+  document.querySelectorAll("[id^=like-icon]").forEach((icon) => {
+    icon.addEventListener("click", () => {
+      icon.classList.toggle("bi-heart-fill"); // Cambiar a corazón lleno
+      icon.classList.toggle("bi-heart"); // Cambiar a corazón vacío
+      icon.style.color = icon.classList.contains("bi-heart-fill")
+        ? "red"
+        : "black"; // Cambiar color
+    });
+  });
+</script>
+{% endblock "content" %}
